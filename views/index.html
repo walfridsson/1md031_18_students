@@ -1,12 +1,89 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>DELI-VERY</title>
-</head>
-<body>
-	<h1>
-		Hello world!
-	</h1>
-	<a href="/map">View map</a>
-</body>
+<html lang="en">
+    <head>
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+        <title>Page title shown in window title</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+			<main>
+        <header>
+				<h1 id="headertext">Welcome to BurgerHeaven Online</h1>
+        <img id="headerpic" src="http://www.themesltd.com/headers2/cool_dude_burger.png">
+      </header>
+      <section id="burger-section">
+				<h2>Select burger</h2>
+				<p>This is where you execute burger selection</p>
+
+        <div class="burgertable">
+          <div class="box a11">The Fire Burger</div>
+          <div class="box a12">Fried Turkey Burger</div>
+          <div class="box a13">A Double w/ Cheese</div>
+          <div class="box a21"><img src="https://cdn.arstechnica.net/wp-content/uploads/2018/08/IF-Burger-800x603.jpg" width="200"></div>
+          <div class="box a22"><img src="https://st.depositphotos.com/1102480/3871/i/950/depositphotos_38715153-stock-photo-big-chicken-hamburger.jpg" width="200"></div>
+          <div class="box a23"><img src="https://thumbs.dreamstime.com/z/dubbel-hamburgare-42796790.jpg" width="200"></div>
+          <div class="box a31"><ul>
+            <li>750 kcal</li>
+            <li>Contains <span id="gluten">gluten</span></li>
+            <li>Contains <span id="lactose">lactose</span></li>
+          </ul></div>
+          <div class="box a32"><ul>
+            <li>Deap fried Turkish turkey</li>
+            <li>Shake-n-bake <span id="gluten">gluten-free</span> bread</li>
+            <li>Contains <span id="lactose">lactose</span></li>
+          </ul></div>
+          <div class="box a33"><ul>
+            <li>Two layers of pure meat</li>
+            <li>Contains <span id="gluten">gluten</span></li>
+            <li>Lots of cheese, contains <span id="lactose">lactose</span></li>
+          </ul></div>
+        </div>
+
+      </section>
+			<section id="information-section">
+				<h2>Customer information</h3>
+				<p>This is where you provide necessary information</p>
+        <h3>Delivery Information</h3>
+        <form>
+          <p>
+            <label for="fullname">Full name</label><br/>
+            <input type="text" id="fullname" name="fn" required="required" placeholder="First and Last name"
+          </p>
+          <p>
+            <label for="email">E-Mail</label><br/>
+            <input type="email" id="email" name="em" required="required" placeholder="E-Mail adress"
+          </p>
+          <p>
+            <label for="street">Street</label><br/>
+            <input type="text" id="street" name="sn" required="required" placeholder="Street name"
+          </p>
+          <p>
+            <label for="house">House</label><br/>
+            <input type="number" id="house" name="hn" required="required" placeholder="House number"
+          </p>
+        <p>
+    <label for="payment">Payment options</label><br>
+    <select id="payment" name="pm">
+        <option>Credit card</option>
+        <option>PayPal</option>
+        <option>Swish</option>
+        <option>Bank transfer</option>
+    </select>
+    </p>
+    <p>
+    <label for="gender">Gender</label><br>
+    <input type="radio" name="gender" value="Female">Female<br>
+    <input type="radio" name="gender" value="Male">Male<br>
+    <input type="radio" name="gender" value="Non-binary">Non-binary<br>
+    <input type="radio" name="gender" value="Undisclosed" checked="checked">Undisclosed<br>
+    </p>
+    </form>
+			</section>
+      <button type="submit" id="button-order"><img src="https://tshirtprinting.com.au/images/media/place-your-order.jpg"></button>
+			</main>
+    </body>
+    <hr>
+    <footer>
+      <p> &copy; 2018 Hypothetical Burgers Inc.</p>
+    </footer>
 </html>

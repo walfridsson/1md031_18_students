@@ -1,0 +1,109 @@
+body {
+  font-family: arial, sans-serif;
+  font-size: 1.1em;
+}
+#gluten{
+  font-weight: bold;
+}
+#lactose{
+  font-weight: bold;
+}
+#burger-section{
+  color: #ffffff;
+  background-color: #000000;
+}
+button:hover{
+  background-color: #28bf76;
+  cursor: pointer;
+}
+table{
+  width: 80%;
+  text-align: center;
+}
+section{
+  margin: 2%;
+  padding: 8px;
+}
+#button-order{
+  margin-top: 2%;
+}
+#information-section{
+  border: 2px dashed #000000;
+}
+#burger-section{
+  border: 2px dashed #ffffff;
+}
+header{
+  margin: 2%;
+  position:relative;
+  height: 200px;
+  overflow: hidden;
+}
+#headerpic{
+  width: 100%;
+  height: auto;
+  opacity: 0.6;
+}
+#headertext{
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+}
+
+.burgertable {
+     display: grid;
+     grid-gap: 10px;
+     grid-template-columns: 250px 250px 250px;
+ }
+
+ .box {
+     border-radius: 5px;
+     padding: 2%;
+ }
+
+ .a11 {
+   grid-column: 1;
+   grid-row: 1;
+   font-size: 110%;
+   text-align: center;
+ }
+ .a12 {
+     grid-column: 2;
+     grid-row: 1;
+     font-size: 110%;
+     text-align: center;
+ }
+ .a13 {
+     grid-column: 3 ;
+     grid-row: 1 ;
+     font-size: 110%;
+     text-align: center;
+ }
+ .a21 {
+     grid-column: 1 ;
+     grid-row: 2 ;
+     text-align: center;
+ }
+ .a22 {
+     grid-column: 2;
+     grid-row: 2 ;
+     text-align: center;
+ }
+ .a23 {
+     grid-column: 3;
+     grid-row: 2 ;
+     text-align: center;
+ }
+ .a31 {
+     grid-column: 1 ;
+     grid-row: 3 ;
+ }
+ .a32 {
+     grid-column: 2 ;
+     grid-row: 3 ;
+ }
+ .a33 {
+     grid-column: 3 ;
+     grid-row: 3 ;
+ }
