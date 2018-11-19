@@ -142,8 +142,8 @@ var vm = new Vue({
 
 
 			socket.emit("addOrder", { orderId: this.getNext(),
-                                details: { x: event.clientX - 10 - this.position.x,
-                                           y: event.clientY - 10 - this.position.y },
+                                details: { x: this.position.x,
+                                           y: this.position.y },
                                 orderItems: [orders.checkBurger],
 																persInfo: [orders.fullname, orders.email, orders.payment, orders.gender]
                               });
