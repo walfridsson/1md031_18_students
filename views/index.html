@@ -1,20 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://vuejs.org/js/vue.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="js/js_script.js"></script>
+
+        <script src="js/vue_script.js" defer></script>
+        <script type="text/javascript" src="js/menu.js"></script>
         <title>Page title shown in window title</title>
         <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/deli-very.css">
+
+        <!-- <script src="js/deli-very.js" defer></script> -->
     </head>
     <body>
-			<main>
-        <header>
-				<h1 id="headertext">Welcome to BurgerHeaven Online</h1>
-        <img id="headerpic" src="http://www.themesltd.com/headers2/cool_dude_burger.png">
-      </header>
-      <section id="burger-section">
-				<h2>Select burger</h2>
-				<p>This is where you execute burger selection</p>
+        <div id="vue-container">
+      		<main>
+            <header>
+          		<h1 id="headertext">Welcome to BurgerHeaven Online</h1>
+              <img id="headerpic" src="http://www.themesltd.com/headers2/cool_dude_burger.png">
+            </header>
+            <section id="burger-section">
+              <div id="myID">
+            		<h2>Select burger</h2>
+            		<p>This is where you execute burger selection</p>
 
+                <div style="display:flex; justify-content:space-evenly">
+                  <div v-for="burger in burgers">
+                    <h4>{{ burger.name }}</h4>
+                    <img :src=burger.image height=160px>
+                    <ul>
+                      <li>{{ burger.kcal }}kCal</li>
+                      <li><span id="gluten">{{burger.gluten}}</span></li>
+                      <li><span id="lactose">{{burger.lactose}}</span></li>
+                      <input type="checkbox" :id=burger.name name="burgercheck" value=burger.name> Add to cart<br>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+<!--
         <div class="burgertable">
           <div class="box a11">The Fire Burger</div>
           <div class="box a12">Fried Turkey Burger</div>
@@ -38,21 +65,22 @@
             <li>Lots of cheese, contains <span id="lactose">lactose</span></li>
           </ul></div>
         </div>
+-->
 
-      </section>
 			<section id="information-section">
-				<h2>Customer information</h3>
+				<h2>Customer information</h2>
 				<p>This is where you provide necessary information</p>
         <h3>Delivery Information</h3>
         <form>
           <p>
             <label for="fullname">Full name</label><br/>
-            <input type="text" id="fullname" name="fn" required="required" placeholder="First and Last name"
+            <input type="text" id="fullname" name="fn" required="required" placeholder="First and Last name">
           </p>
           <p>
             <label for="email">E-Mail</label><br/>
-            <input type="email" id="email" name="em" required="required" placeholder="E-Mail adress"
+            <input type="email" id="email" name="em" required="required" placeholder="E-Mail adress">
           </p>
+          <!--
           <p>
             <label for="street">Street</label><br/>
             <input type="text" id="street" name="sn" required="required" placeholder="Street name"
@@ -61,26 +89,59 @@
             <label for="house">House</label><br/>
             <input type="number" id="house" name="hn" required="required" placeholder="House number"
           </p>
-        <p>
-    <label for="payment">Payment options</label><br>
-    <select id="payment" name="pm">
-        <option>Credit card</option>
-        <option>PayPal</option>
-        <option>Swish</option>
-        <option>Bank transfer</option>
-    </select>
-    </p>
-    <p>
-    <label for="gender">Gender</label><br>
-    <input type="radio" name="gender" value="Female">Female<br>
-    <input type="radio" name="gender" value="Male">Male<br>
-    <input type="radio" name="gender" value="Non-binary">Non-binary<br>
-    <input type="radio" name="gender" value="Undisclosed" checked="checked">Undisclosed<br>
-    </p>
-    </form>
-			</section>
-      <button type="submit" id="button-order"><img src="https://tshirtprinting.com.au/images/media/place-your-order.jpg"></button>
-			</main>
+        -->
+            <p>
+              <label for="payment">Payment options</label><br>
+              <select id="payment" name="pm">
+                  <option>Credit card</option>
+                  <option>PayPal</option>
+                  <option>Swish</option>
+                  <option>Bank transfer</option>
+              </select>
+            </p>
+            <p>
+              <label for="gender">Gender</label><br>
+              <input type="radio" name="gender" value="Female">Female<br>
+              <input type="radio" name="gender" value="Male">Male<br>
+              <input type="radio" name="gender" value="Non-binary">Non-binary<br>
+              <input type="radio" name="gender" value="Undisclosed" checked="checked">Undisclosed<br>
+            </p>
+          </form>
+      <!-- <div id="infobox">
+
+      </div> -->
+		    </section>
+
+<!-- KARTA -->
+        <h2> Click where to deliver on the map! </h2>
+        <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+        <div class="view-box">
+          <div id="dots" v-on:click="clickMap">
+              <div
+                v-bind:style="{ left: position.x + 'px', top: position.y + 'px'}">
+                T
+              </div>
+            </div>
+          </div>
+
+          <div id="orders">
+            <button type="submit" id="button-order" v-on:click="addOrder"><img src="https://tshirtprinting.com.au/images/media/place-your-order.jpg"></button>
+          </div>
+
+          <div id="infobox">
+            <h2> Order information </h2>
+            <h3> Customer details </h3>
+            <div id="customer">
+
+            </div>
+            <h3> Order summary </h3>
+            <div id="summary">
+
+            </div>
+          </div>
+
+        </main>
+      </div>
     </body>
     <hr>
     <footer>
